@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Infix → Postfix · ZySib{% endblock %}
+{% block content %}
+<h1>Infix → Postfix Converter</h1>
+<p class="lead">Enter an infix expression (e.g., <code>A*(B+C)/D</code>) and convert it to postfix.</p>
+
+<form method="post" class="stack">
+  <label>Infix Expression
+    <input type="text" name="expression" placeholder="A*(B+C)/D" value="{{ expression or '' }}" required>
+  </label>
+  <button class="btn" type="submit">Convert to Postfix</button>
+</form>
+
+{% if result is not none %}
+  <div class="card holo" style="margin-top:1rem;">
+    <h3>Postfix</h3>
+    <pre style="white-space:pre-wrap;">{{ result }}</pre>
+  </div>
+{% endif %}
+
+<p style="margin-top:1rem;"><a href="{{ url_for('works') }}">← Back to Works</a></p>
+{% endblock %}
